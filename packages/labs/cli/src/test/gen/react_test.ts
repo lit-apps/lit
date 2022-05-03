@@ -4,16 +4,18 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import {test} from 'uvu';
 // eslint-disable-next-line import/extensions
 import * as assert from 'uvu/assert';
 import {LitCli} from '../../lib/lit-cli.js';
 import {LitConsole} from '../../lib/console.js';
 import {BufferedWritable} from '../buffered-writable.js';
+import {suite} from '../uvu-wrapper.js';
 
 let outputStream: BufferedWritable;
 let errorStream: BufferedWritable;
 let cliConsole: LitConsole;
+
+const test = suite();
 
 test.before(() => {
   outputStream = new BufferedWritable();
