@@ -22,13 +22,13 @@
   },
   "wireit": {
     "build": {
+      "command": "tsc --skipLibCheck >/dev/null || echo ''",
       "#TODO": "this needs to depend on ../../localize-tools:build I think",
       "files": [
         "tsconfig.json",
         "src/**/*"
       ],
-      "#comment": "This never fails and always emits output so that we can run tests of code that doesn't type check",
-      "command": "tsc --skipLibCheck >/dev/null || echo ''"
+      "#comment": "This never fails and always emits output so that we can run tests of code that doesn't type check"
     },
     "test": {
       "dependencies": [
@@ -37,19 +37,19 @@
       ]
     },
     "test:compile": {
+      "command": "tsc --pretty --noEmit",
       "files": [
         "tsconfig.json",
         "src/**/*"
-      ],
-      "command": "tsc --pretty --noEmit"
+      ]
     },
     "test:actual": {
+      "command": "uvu test '.*_test\\.js$'",
       "dependencies": [
         "build"
       ],
       "files": [],
-      "output": [],
-      "command": "uvu test '.*_test\\.js$'"
+      "output": []
     }
   },
   "dependencies": {
